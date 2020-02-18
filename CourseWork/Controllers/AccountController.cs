@@ -155,11 +155,24 @@ namespace CourseWork.Controllers
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
-               
+                var userID = UserManager.FindByEmail(user.Email).Id;
                 if (result.Succeeded)
                 {
-                    UserManager.AddToRole(user.Id, "User");
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    if (model.Role == "User")
+                    {
+                        UserManager.AddToRole(userID, "User");
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    }
+                    else
+                    {
+                        user.PimpConfirmed = false;
+                        UserManager.Update(user);
+                        UserManager.AddToRole(userID, "Pimp");
+                        UserManager.AddToRole(userID, "User");
+                    }
+                    
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

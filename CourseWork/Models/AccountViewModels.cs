@@ -82,6 +82,11 @@ namespace CourseWork.Models
 
         [Required]
         public string Role { get; set; }
+
+
+
+        [DataType(DataType.MultilineText)]
+        public string Emails { get; set; }
     }
 
     public class ResetPasswordViewModel
