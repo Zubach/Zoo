@@ -27,6 +27,7 @@ namespace CourseWork.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<WhoreConfirmModel> WhoresConfirm { get; set; }
+        public DbSet<WhoreModel> Whores { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CourseWork.Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CourseWork.Controllers
 {
@@ -78,7 +80,11 @@ namespace CourseWork.Controllers
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
+
+
                 case SignInStatus.Success:
+
+                
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -169,6 +175,19 @@ namespace CourseWork.Controllers
                     {
                         user.PimpConfirmed = false;
                         UserManager.Update(user);
+
+                        IEnumerable<string> emails =  model.Email.Split(' ');
+
+                        ApplicationDbContext _context = new ApplicationDbContext();
+                        foreach (var item in emails) {
+                            _context.WhoresConfirm.Add(new WhoreConfirmModel() {
+                                PimpID = userID,
+                                Confirmed = false,
+                                Email = item
+                            });
+                        }
+                        _context.SaveChanges();
+
                         UserManager.AddToRole(userID, "Pimp");
                         UserManager.AddToRole(userID, "User");
                     }

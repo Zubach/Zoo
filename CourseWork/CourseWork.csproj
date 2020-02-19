@@ -167,6 +167,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\PimpPanel\Controllers\PimpController.cs" />
+    <Compile Include="Areas\PimpPanel\Models\WhoreViewModel.cs" />
+    <Compile Include="Areas\PimpPanel\PimpPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,12 +185,21 @@
     <Compile Include="Migrations\202002181812416_second.Designer.cs">
       <DependentUpon>202002181812416_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002191611510_third.cs" />
+    <Compile Include="Migrations\202002191611510_third.Designer.cs">
+      <DependentUpon>202002191611510_third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002191804322_fourth.cs" />
+    <Compile Include="Migrations\202002191804322_fourth.Designer.cs">
+      <DependentUpon>202002191804322_fourth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\WhoreConfirmModel.cs" />
     <Compile Include="Models\WhoreConfirmViewModel.cs" />
+    <Compile Include="Models\WhoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -202,6 +214,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\PimpPanel\Views\web.config" />
+    <Content Include="Areas\PimpPanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Pimp\Index.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Pimp\AccessDenied.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Shared\_LoginPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -272,6 +290,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002181812416_second.resx">
       <DependentUpon>202002181812416_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002191611510_third.resx">
+      <DependentUpon>202002191611510_third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002191804322_fourth.resx">
+      <DependentUpon>202002191804322_fourth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

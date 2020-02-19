@@ -7,20 +7,19 @@ using System.Web;
 
 namespace CourseWork.Models
 {
-
-    [Table("tblWhoreCnf")]
-    public class WhoreConfirmModel
+    [Table("tblWhores")]
+    public class WhoreModel
     {
         [Key]
+        public string UserID { get; set; }
+
+        [Required]
+        public decimal PricePerHour { get; set; }
+
+
+        [Required]
         public string PimpID { get; set; }
 
-        
-        [Required]
-
-        public string Email { get; set; }
-
-        [Required]
-        public bool  Confirmed { get; set; }
 
 
     }
