@@ -43,15 +43,17 @@ namespace CourseWork.Migrations
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             if (!userManager.Users.Any())
             {
-                ApplicationUser user = new ApplicationUser()
-                {
-                    UserName = "Kage",
-                    Email = "vanyakage@gmail.com",
-                };
-
-                userManager.Create(user, "Qwerty-1");
-                userManager.AddToRole(user.Id, "Admin");
+               
             }
-          }
+            ApplicationUser user = new ApplicationUser()
+            {
+                UserName = "vanyakage@gmail.com",
+                Email = "vanyakage@gmail.com",
+            };
+
+            userManager.Create(user, "Qwerty-1");
+            userManager.AddToRole(user.Id, "Admin");
+
+        }
     }
 }

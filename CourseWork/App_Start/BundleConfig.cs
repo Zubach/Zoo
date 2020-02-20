@@ -28,6 +28,9 @@ namespace CourseWork
 
             bundles.Add(new ScriptBundle("~/bundles/bPopup").Include("~/Scripts/bPopup.js")
                 );
+            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js")
+                
+                );
         }
     }
 }

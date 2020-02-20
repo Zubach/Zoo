@@ -1,0 +1,62 @@
+﻿@using CourseWork.Areas.AdminPanel.Models;
+@model dynamic
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>AdminPanel</h2>
+
+<div>
+    <button class="btn btn-primary" id="usersBtn" onclick="usersBtnClick()">
+        Users
+    </button>
+    <button class="btn" id="pimpsBtn" onclick="pimpsBtnClick()">
+        Pimps
+    </button>
+</div>
+
+<table class="table" id="usersTbl">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+    </tr>
+    @foreach (UserViewModel user in Model.Users)
+    {
+        <tr>
+            <td>@user.ID</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.PhoneNumber</td>
+        </tr>
+    }
+</table>
+
+
+
+<table class="table" id="pimpsTbl">
+    <tr>
+        <th>Id</th>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Confirmed</th>
+    </tr>
+    @foreach (PimpViewModel pimp in Model.Pimps)
+    {
+        <tr>
+            <td>@pimp.ID</td>
+            <td>@pimp.UserName</td>
+            <td>@pimp.Email</td>
+            <td>@pimp.PhoneNumber</td>
+            <td>
+                @if (pimp.Confirmed == false)
+                {@Html.ActionLink("Confirm", "Confirm", new { id = pimp.ID }, new { @class = "btn btn-success" })}
+            else
+            { @Html.ActionLink("Cancel Confirm", "Cancel", new { id = pimp.ID }, new { @class = "btn btn-danger" })}
+                    </td>
+        </tr>
+    }
+</table>

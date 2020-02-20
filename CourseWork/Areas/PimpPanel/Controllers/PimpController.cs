@@ -19,10 +19,10 @@ namespace CourseWork.Areas.PimpPanel.Controllers
 
         }
         // GET: PimpPanel/Pimp
+        [Authorize(Roles ="Pimp")]
         public ActionResult Index()
         {
-            if (!User.IsInRole("Pimp"))
-                return RedirectToAction("Index","/Home");
+            
             var pimp = _context.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
             if (!(pimp.PimpConfirmed == true ? true:false))
             {

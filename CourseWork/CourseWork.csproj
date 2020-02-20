@@ -167,6 +167,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\AdminController.cs" />
+    <Compile Include="Areas\AdminPanel\Models\PimpViewModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\UserViewModel.cs" />
     <Compile Include="Areas\PimpPanel\Controllers\PimpController.cs" />
     <Compile Include="Areas\PimpPanel\Models\WhoreViewModel.cs" />
     <Compile Include="Areas\PimpPanel\PimpPanelAreaRegistration.cs" />
@@ -220,6 +224,11 @@
     <Content Include="Areas\PimpPanel\Views\Pimp\Index.cshtml" />
     <Content Include="Areas\PimpPanel\Views\Pimp\AccessDenied.cshtml" />
     <Content Include="Areas\PimpPanel\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\web.config" />
+    <Content Include="Areas\AdminPanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shared\_LoginPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -231,6 +240,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
