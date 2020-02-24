@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CourseWork.Areas.AdminPanel.Models.WhoreConfirmViewModel>
+
+@{
+    ViewBag.Title = "Whores";
+}
+
+<h2>Whores</h2>
+
+<table class="table">
+    <tr>
+       
+
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @if (item.Confirmed)
+            {
+                <label class="label">
+                    <input class="label__checkbox" type="checkbox" checked disabled/>
+
+                    <span class="label__text">
+                        <span class="label__check">
+                          
+                        </span>
+                    </span>
+                </label>
+            }
+            else
+            {
+                <label class="label">
+                    <input class="label__checkbox" type="checkbox" disabled />
+
+                    <span class="label__text">
+                        <span class="label__check">
+                            
+                        </span>
+                    </span>
+                </label>
+            }
+
+            @*@Html.DisplayFor(modelItem => item.Confirmed)*@
+        </td>
+       
+    </tr>
+}
+
+</table>

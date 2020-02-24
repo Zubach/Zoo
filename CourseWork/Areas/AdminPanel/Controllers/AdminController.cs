@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using WhoreConfirmViewModel = CourseWork.Areas.AdminPanel.Models.WhoreConfirmViewModel;
+
 namespace CourseWork.Areas.AdminPanel.Controllers
 {
     public class AdminController : Controller
@@ -62,18 +64,44 @@ namespace CourseWork.Areas.AdminPanel.Controllers
             model.Pimps = pimps;
             model.Users = users_m;
 
+           
+
             return View(model);
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost]
+        
         public ActionResult Confirm(string id)
         {
             var pimp = _context.Users.FirstOrDefault(x => x.Id == id);
             pimp.PimpConfirmed = true;
             _context.SaveChanges();
+            return RedirectToAction("Index","Admin");
+        }
+
+        [Authorize(Roles = "Admin")]
+        
+        public ActionResult Cancel(string id)
+        {
+            var pimp = _context.Users.FirstOrDefault(x => x.Id == id);
+
+            pimp.PimpConfirmed = false;
+
+            _context.SaveChanges();
+
             return Index();
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult Whores(string id)
+        {
+            var list = _context.WhoresConfirm.ToList().Where(x => x.PimpID == id).Select(y=> new WhoreConfirmViewModel() {
+                Confirmed = y.Confirmed,
+                PimpID = y.PimpID,
+                Email = y.Email
+            });
+
+            return View(list);
+        }
     }
 }

@@ -171,6 +171,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\AdminController.cs" />
     <Compile Include="Areas\AdminPanel\Models\PimpViewModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\UserViewModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\WhoreConfirmViewModel.cs" />
     <Compile Include="Areas\PimpPanel\Controllers\PimpController.cs" />
     <Compile Include="Areas\PimpPanel\Models\WhoreViewModel.cs" />
     <Compile Include="Areas\PimpPanel\PimpPanelAreaRegistration.cs" />
@@ -229,6 +230,7 @@
     <Content Include="Areas\AdminPanel\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Admin\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Admin\Whores.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

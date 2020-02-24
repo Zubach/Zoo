@@ -6,6 +6,12 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+        @if (User.IsInRole("Admin"))
+        {
+        <li>
+            @Html.ActionLink("AdminPanel", "Index", "Admin", new {Area ="AdminPanel" }, htmlAttributes: new { title = "AdminPanel" })
+        </li>
+        }
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
