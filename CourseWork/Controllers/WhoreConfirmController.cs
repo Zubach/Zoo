@@ -21,21 +21,26 @@ namespace CourseWork.Controllers
         [HttpGet]
         public ActionResult Confirm(string emailHash,string pimpID)
         {
+            ApplicationDbContext _context = new ApplicationDbContext();
+            
             WhoreConfirmViewModel model = new WhoreConfirmViewModel()
             {
                 PimpID = pimpID,
-                EmailHash = emailHash
+                EmailHash = emailHash,
+                Confirmed = _context.WhoresConfirm.ToList().FirstOrDefault(x => x.PimpID == pimpID && x.Email.GetHashCode().ToString() == emailHash).Confirmed
             };
+
             return View(model);
         }
 
         
         public ActionResult Confirm(WhoreConfirmViewModel model)
         {
-            var confirm = _context.WhoresConfirm.FirstOrDefault(x=> x.PimpID == model.PimpID && x.Email.GetHashCode().ToString() == model.EmailHash);
+            var confirm = _context.WhoresConfirm.ToList().FirstOrDefault(x=> x.PimpID == model.PimpID && x.Email.GetHashCode().ToString() == model.EmailHash);
             confirm.Confirmed = true;
             _context.SaveChanges();
-            return View();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

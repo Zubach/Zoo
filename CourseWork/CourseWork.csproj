@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202002191804322_fourth.Designer.cs">
       <DependentUpon>202002191804322_fourth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002251627070_fix-confirm.cs" />
+    <Compile Include="Migrations\202002251627070_fix-confirm.Designer.cs">
+      <DependentUpon>202002251627070_fix-confirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -308,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002191804322_fourth.resx">
       <DependentUpon>202002191804322_fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002251627070_fix-confirm.resx">
+      <DependentUpon>202002251627070_fix-confirm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

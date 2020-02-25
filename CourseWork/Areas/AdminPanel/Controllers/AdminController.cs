@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -71,11 +72,34 @@ namespace CourseWork.Areas.AdminPanel.Controllers
 
         [Authorize(Roles = "Admin")]
         
-        public ActionResult Confirm(string id)
+        public async Task<ActionResult> Confirm(string id)
         {
             var pimp = _context.Users.FirstOrDefault(x => x.Id == id);
             pimp.PimpConfirmed = true;
+
+            var list = _context.WhoresConfirm.ToList().Where(x => x.PimpID == pimp.Id && x.Confirmed).ToList();
+            foreach (var item in list) {
+                var user = new ApplicationUser() { UserName = item.Email,Email = item.Email };
+
+                var result = await userManager.CreateAsync(user, "Qwerty-1");
+                if (result.Succeeded)
+                {
+                    _context.Whores.Add(new WhoreModel() {
+                        PimpID = pimp.Id,
+                        PricePerHour = 0,
+                        UserID = _context.Users.FirstOrDefault(x => x.Email == user.Email).Id
+                });
+                }
+                _context.WhoresConfirm.Remove(item);
+
+            }
+            
+            
+
+            
+
             _context.SaveChanges();
+            
             return RedirectToAction("Index","Admin");
         }
 
@@ -89,11 +113,11 @@ namespace CourseWork.Areas.AdminPanel.Controllers
 
             _context.SaveChanges();
 
-            return Index();
+            return RedirectToAction("Index", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult Whores(string id)
+        public ActionResult StatusWhores(string id)
         {
             var list = _context.WhoresConfirm.ToList().Where(x => x.PimpID == id).Select(y=> new WhoreConfirmViewModel() {
                 Confirmed = y.Confirmed,
@@ -102,6 +126,14 @@ namespace CourseWork.Areas.AdminPanel.Controllers
             });
 
             return View(list);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+
+            return RedirectToAction("LogOff", "Home", new { area = "" });
         }
     }
 }

@@ -11,7 +11,10 @@ namespace CourseWork.Models
     [Table("tblWhoreCnf")]
     public class WhoreConfirmModel
     {
+
         [Key]
+        public string ID { get; set; }
+
         public string PimpID { get; set; }
 
         

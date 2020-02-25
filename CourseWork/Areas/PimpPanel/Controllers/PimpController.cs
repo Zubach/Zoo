@@ -23,13 +23,13 @@ namespace CourseWork.Areas.PimpPanel.Controllers
         public ActionResult Index()
         {
             
-            var pimp = _context.Users.FirstOrDefault(x => x.Id == User.Identity.GetUserId());
+            var pimp = _context.Users.ToList().FirstOrDefault(x => x.Id == User.Identity.GetUserId());
             if (!(pimp.PimpConfirmed == true ? true:false))
             {
-                return AccessDenied();
+                return RedirectToAction("AccessDenied","Pimp");
             }
 
-            var list = _context.Whores.Select(x => new WhoreViewModel() {
+            var list = _context.Whores.Where(i=> i.PimpID == pimp.Id).Select(x => new WhoreViewModel() {
                 PimpID = x.PimpID,
                 UserID = x.UserID,
                 PricePerHour = x.PricePerHour

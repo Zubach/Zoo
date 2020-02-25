@@ -10,5 +10,7 @@ namespace CourseWork.Models
         public string PimpID { get; set; }
 
         public string EmailHash { get; set; }
+
+        public bool Confirmed { get; set; }
     }
 }
