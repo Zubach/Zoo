@@ -202,9 +202,14 @@
     <Compile Include="Migrations\202002251627070_fix-confirm.Designer.cs">
       <DependentUpon>202002251627070_fix-confirm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002261653359_images.cs" />
+    <Compile Include="Migrations\202002261653359_images.Designer.cs">
+      <DependentUpon>202002261653359_images.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\WhoreConfirmModel.cs" />
     <Compile Include="Models\WhoreConfirmViewModel.cs" />
@@ -235,6 +240,7 @@
     <Content Include="Areas\AdminPanel\Views\Admin\Index.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Admin\Whores.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Pimp\CreateWhore.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002251627070_fix-confirm.resx">
       <DependentUpon>202002251627070_fix-confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261653359_images.resx">
+      <DependentUpon>202002261653359_images.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

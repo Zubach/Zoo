@@ -28,6 +28,8 @@ namespace CourseWork.Models
     {
         public DbSet<WhoreConfirmModel> WhoresConfirm { get; set; }
         public DbSet<WhoreModel> Whores { get; set; }
+
+        public DbSet<ImageModel> Images { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
