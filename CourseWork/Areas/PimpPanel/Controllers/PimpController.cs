@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using WhoreViewModel = CourseWork.Areas.PimpPanel.Models.WhoreViewModel;
 
 namespace CourseWork.Areas.PimpPanel.Controllers
 {
@@ -68,18 +69,18 @@ namespace CourseWork.Areas.PimpPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
+                //var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+                //var result = await userManager.CreateAsync(user);
+                //if (result.Succeeded)
+                //{
 
-                    var userID = _context.Users.ToList().FirstOrDefault(x => x.Email == model.Email).Id;
+                   // var userID = _context.Users.ToList().FirstOrDefault(x => x.Email == model.Email).Id;
 
-                    _context.Whores.Add(new WhoreModel() {
-                        PimpID = User.Identity.GetUserId(),
-                        PricePerHour = model.PricePerHour,
-                        UserID = userID
-                    });
+                    //_context.Whores.Add(new WhoreModel() {
+                    //    PimpID = User.Identity.GetUserId(),
+                    //    PricePerHour = model.PricePerHour,
+                    //    UserID = userID
+                    //});
 
                     byte[] imageData = null;
 
@@ -92,16 +93,16 @@ namespace CourseWork.Areas.PimpPanel.Controllers
                     {
                         image.Save("../../Images" + imageUrl, ImageFormat.Jpeg);
                     }
-                    _context.Images.Add(new ImageModel() {
-                        ID = Guid.NewGuid().ToString(),
-                        UserID = userID,
-                        ImageName = imageUrl
-                    });
+                    //_context.Images.Add(new ImageModel() {
+                    //    ID = Guid.NewGuid().ToString(),
+                    //    UserID = userID,
+                    //    ImageName = imageUrl
+                    //});
 
                     _context.SaveChanges();
                     return RedirectToAction("Index");
 
-                }
+               // }
                 return View(model);
 
                

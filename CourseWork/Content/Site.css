@@ -186,3 +186,30 @@ textarea {
         opacity: 1;
     }
 }
+
+.whore {
+    padding: 5px;
+    -webkit-box-shadow: 10px 10px 37px 0px rgba(173,173,173,1);
+    -moz-box-shadow: 10px 10px 37px 0px rgba(173,173,173,1);
+    box-shadow: 10px 10px 37px 0px rgba(173,173,173,1);
+    border-radius: 3px;
+}
+
+.while h4{
+    font-weight:bold;
+}
+
+.whore-price {
+    
+    color: rgb(30, 174, 33);
+
+    margin-left:auto;
+
+
+    /*display: inline;
+    flex-direction: row;
+    justify-content: flex-end;*/
+}
+.whore-order-btn{
+    float:right;
+}

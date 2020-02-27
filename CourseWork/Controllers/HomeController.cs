@@ -27,8 +27,29 @@ namespace CourseWork.Controllers
               //  return RedirectToAction("Index", new { Area = "" });
             }
 
+            var list = _context.Whores.ToList().Select( x =>
+                new WhoreViewModel() {
+                    PimpID = x.PimpID,
+                    UserID = x.UserID,
+                    PricePerHour = x.PricePerHour,
+                    UserName = _context.Users.ToList().FirstOrDefault(y=>y.Id ==x.UserID ).UserName
+                });
+            if (User.Identity.IsAuthenticated) 
+                return View(list);
+            return RedirectToAction("Register","Account");
+        }
 
-            return View();
+        public ActionResult Order(string id)
+        {
+
+            var whore = _context.Whores.FirstOrDefault(x=> x.UserID == id);
+
+            var model = new OrderWhoreViewModel() {
+                UserID = User.Identity.GetUserId(),
+                WhoreID = whore.UserID
+            };
+
+            return View(model);
         }
 
         public ActionResult About()

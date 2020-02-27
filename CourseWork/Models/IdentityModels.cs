@@ -30,6 +30,8 @@ namespace CourseWork.Models
         public DbSet<WhoreModel> Whores { get; set; }
 
         public DbSet<ImageModel> Images { get; set; }
+
+        public DbSet<OrderModel> Orders { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

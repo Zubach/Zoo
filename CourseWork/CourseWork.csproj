@@ -206,14 +206,21 @@
     <Compile Include="Migrations\202002261653359_images.Designer.cs">
       <DependentUpon>202002261653359_images.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002271836171_orders.cs" />
+    <Compile Include="Migrations\202002271836171_orders.Designer.cs">
+      <DependentUpon>202002271836171_orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\OrderWhoreViewModel.cs" />
     <Compile Include="Models\WhoreConfirmModel.cs" />
     <Compile Include="Models\WhoreConfirmViewModel.cs" />
     <Compile Include="Models\WhoreModel.cs" />
+    <Compile Include="Models\WhoreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -289,6 +296,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WhoreConfirm\Confirm.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002261653359_images.resx">
       <DependentUpon>202002261653359_images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002271836171_orders.resx">
+      <DependentUpon>202002271836171_orders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

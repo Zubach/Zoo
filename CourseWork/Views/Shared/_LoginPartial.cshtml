@@ -12,6 +12,12 @@
             @Html.ActionLink("AdminPanel", "Index", "Admin", new {Area ="AdminPanel" }, htmlAttributes: new { title = "AdminPanel" })
         </li>
         }
+        @if (User.IsInRole("Pimp"))
+        {
+            <li>
+                @Html.ActionLink("PimpPanel","Index","Pimp",new {Area = "PimpPanel" }, htmlAttributes: new { title="PimpPanel" })
+            </li>
+        }
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
