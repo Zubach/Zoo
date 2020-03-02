@@ -69,18 +69,19 @@ namespace CourseWork.Areas.PimpPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-                //var result = await userManager.CreateAsync(user);
-                //if (result.Succeeded)
-                //{
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    var userID = _context.Users.ToList().FirstOrDefault(x => x.Email == model.Email).Id;
+                    userManager.AddToRole(userID, "Whore");
 
-                   // var userID = _context.Users.ToList().FirstOrDefault(x => x.Email == model.Email).Id;
-
-                    //_context.Whores.Add(new WhoreModel() {
-                    //    PimpID = User.Identity.GetUserId(),
-                    //    PricePerHour = model.PricePerHour,
-                    //    UserID = userID
-                    //});
+                    _context.Whores.Add(new WhoreModel()
+                    {
+                        PimpID = User.Identity.GetUserId(),
+                        PricePerHour = model.PricePerHour,
+                        UserID = userID
+                    });
 
                     byte[] imageData = null;
 
@@ -102,7 +103,7 @@ namespace CourseWork.Areas.PimpPanel.Controllers
                     _context.SaveChanges();
                     return RedirectToAction("Index");
 
-               // }
+                }
                 return View(model);
 
                

@@ -84,10 +84,12 @@ namespace CourseWork.Areas.AdminPanel.Controllers
                 var result = await userManager.CreateAsync(user, "Qwerty-1");
                 if (result.Succeeded)
                 {
+                    var UserId = _context.Users.FirstOrDefault(x => x.Email == user.Email).Id;
+                    userManager.AddToRole(UserId, "Whore");
                     _context.Whores.Add(new WhoreModel() {
                         PimpID = pimp.Id,
                         PricePerHour = 0,
-                        UserID = _context.Users.FirstOrDefault(x => x.Email == user.Email).Id
+                        UserID = UserId
                 });
                 }
                 _context.WhoresConfirm.Remove(item);

@@ -10,7 +10,7 @@ namespace CourseWork.Controllers
 {
     public class HomeController : Controller
     {
-            ApplicationDbContext _context = new ApplicationDbContext();
+        ApplicationDbContext _context = new ApplicationDbContext();
         public ActionResult Index()
         {
             if (User.IsInRole("Pimp"))
@@ -19,26 +19,26 @@ namespace CourseWork.Controllers
                 var pimp = _context.Users.FirstOrDefault(x => x.Id == userId);
                 if (!(pimp.PimpConfirmed == true ? true : false))
                 {
-                    return RedirectToAction("AccessDenied", "Pimp" ,new {Area = "PimpPanel" });
+                    return RedirectToAction("AccessDenied", "Pimp", new { Area = "PimpPanel" });
                 }
             }
             else
             {
-              //  return RedirectToAction("Index", new { Area = "" });
+                //  return RedirectToAction("Index", new { Area = "" });
             }
 
-            var list = _context.Whores.ToList().Select( x =>
-                new WhoreViewModel() {
-                    PimpID = x.PimpID,
-                    UserID = x.UserID,
-                    PricePerHour = x.PricePerHour,
-                    UserName = _context.Users.ToList().FirstOrDefault(y=>y.Id ==x.UserID ).UserName
-                });
-            if (User.Identity.IsAuthenticated) 
+            var list = _context.Whores.ToList().Select(x =>
+               new WhoreViewModel() {
+                   PimpID = x.PimpID,
+                   UserID = x.UserID,
+                   PricePerHour = x.PricePerHour,
+                   UserName = _context.Users.ToList().FirstOrDefault(y => y.Id == x.UserID).UserName
+               });
+            if (User.Identity.IsAuthenticated)
                 return View(list);
-            return RedirectToAction("Register","Account");
+            return RedirectToAction("Register", "Account");
         }
-
+        [HttpGet]
         public ActionResult Order(string id)
         {
 
@@ -50,6 +50,24 @@ namespace CourseWork.Controllers
             };
 
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult Order(OrderWhoreViewModel model)
+        {
+            var orders = _context.Orders.Where(x=> x.WhoreID == model.WhoreID).ToList();
+            var date = new DateTime(model.MeetingTime_Date.Year,model.MeetingTime_Date.Month,model.MeetingTime_Date.Day,model.MeetingTime_Time.Hour,model.MeetingTime_Time.Minute,model.MeetingTime_Time.Second);
+            if(orders.FirstOrDefault(x=>  x.MeetingTime ==  date) != null)
+            {
+                return View(model);
+            }
+            _context.Orders.Add(new OrderModel() {
+                ID = Guid.NewGuid().ToString(),
+                UserID = model.UserID,
+                WhoreID = model.WhoreID,
+                MeetingTime = date
+            });
+            _context.SaveChanges();
+            return RedirectToAction("Index","Home");
         }
 
         public ActionResult About()

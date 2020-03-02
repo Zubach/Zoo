@@ -175,6 +175,9 @@
     <Compile Include="Areas\PimpPanel\Controllers\PimpController.cs" />
     <Compile Include="Areas\PimpPanel\Models\WhoreViewModel.cs" />
     <Compile Include="Areas\PimpPanel\PimpPanelAreaRegistration.cs" />
+    <Compile Include="Areas\WhorePanel\Controllers\WhoreController.cs" />
+    <Compile Include="Areas\WhorePanel\Models\OrderViewModel.cs" />
+    <Compile Include="Areas\WhorePanel\WhorePanelAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -248,6 +251,10 @@
     <Content Include="Areas\AdminPanel\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Admin\Whores.cshtml" />
     <Content Include="Areas\PimpPanel\Views\Pimp\CreateWhore.cshtml" />
+    <Content Include="Areas\WhorePanel\Views\web.config" />
+    <Content Include="Areas\WhorePanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WhorePanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WhorePanel\Views\Whore\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -8,9 +8,13 @@ namespace CourseWork.Models
 {
     public class OrderWhoreViewModel
     {
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
+        [Required]
+        public DateTime MeetingTime_Date { get; set; }
 
-        public DateTime MeetingTime { get; set; }
+        [DataType(DataType.Date | DataType.DateTime)]
+        [Required]
+        public DateTime MeetingTime_Time { get; set; }
 
         public string UserID { get; set; }
 
