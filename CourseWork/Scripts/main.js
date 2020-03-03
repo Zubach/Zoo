@@ -24,3 +24,8 @@ function usersBtnClick() {
     document.getElementById("usersBtn").className = "btn btn-primary";
 
 }
+
+
+$("form").on("change", ".file-upload-field", function () {
+    $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/, ''));
+});

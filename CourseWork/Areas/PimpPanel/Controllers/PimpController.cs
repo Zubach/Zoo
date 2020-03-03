@@ -67,10 +67,11 @@ namespace CourseWork.Areas.PimpPanel.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateWhore(WhoreViewModel model, HttpPostedFileBase PhotoFile)
         {
+
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user);
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
+                var result = await userManager.CreateAsync(user,"Qwerty-1");
                 if (result.Succeeded)
                 {
                     var userID = _context.Users.ToList().FirstOrDefault(x => x.Email == model.Email).Id;
@@ -83,17 +84,26 @@ namespace CourseWork.Areas.PimpPanel.Controllers
                         UserID = userID
                     });
 
-                    byte[] imageData = null;
-
-                    using (var binaryReader = new BinaryReader(PhotoFile.InputStream))
-                    {
-                        imageData = binaryReader.ReadBytes(PhotoFile.ContentLength);
-                    }
                     string imageUrl = Guid.NewGuid().ToString() + ".jpg";
-                    using (Image image = Image.FromStream(new MemoryStream(imageData)))
+
+                    using (Bitmap bmp = new Bitmap(PhotoFile.InputStream))
                     {
-                        image.Save("../../Images" + imageUrl, ImageFormat.Jpeg);
+                        var saveImage = ImageWorker.CreateImage(bmp, 200, 200);
+                        if (saveImage != null)
+                        {
+                            var fullImageString = Server.MapPath(Constants.ProductImagePath) + imageUrl;
+                            saveImage.Save(fullImageString, ImageFormat.Jpeg);
+
+
+                            _context.Images.Add(new ImageModel() {
+                                ID = Guid.NewGuid().ToString(),
+                                UserID = userID,
+                                ImageName = imageUrl
+                            });
+                          //  _context.SaveChanges();
+                        }
                     }
+                    
                     //_context.Images.Add(new ImageModel() {
                     //    ID = Guid.NewGuid().ToString(),
                     //    UserID = userID,

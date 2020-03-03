@@ -32,7 +32,9 @@ namespace CourseWork.Controllers
                    PimpID = x.PimpID,
                    UserID = x.UserID,
                    PricePerHour = x.PricePerHour,
-                   UserName = _context.Users.ToList().FirstOrDefault(y => y.Id == x.UserID).UserName
+                   UserName = _context.Users.ToList().FirstOrDefault(y => y.Id == x.UserID).UserName,
+                   ImageUrl = _context.Images.FirstOrDefault(j => j.UserID == x.UserID).ImageName
+                  
                });
             if (User.Identity.IsAuthenticated)
                 return View(list);

@@ -19,5 +19,7 @@ namespace CourseWork.Models
 
         
         public string PimpID { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }
