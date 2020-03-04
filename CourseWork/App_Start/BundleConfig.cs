@@ -24,7 +24,8 @@ namespace CourseWork
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.css"));
+                      "~/Content/Style.css"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/bPopup").Include("~/Scripts/bPopup.js")
                 );

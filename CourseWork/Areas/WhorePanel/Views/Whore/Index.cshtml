@@ -6,9 +6,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -17,7 +14,10 @@
         <th>
             @Html.DisplayNameFor(model => model.UserID)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -29,9 +29,15 @@
             @Html.DisplayFor(modelItem => item.UserID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @if (!item.Confirmed)
+            {
+                @Html.ActionLink("Confirm", "Confirm", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success" })
+            }
+            else
+            {
+                @Html.ActionLink("Confirm", "Confirm", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-success", @disabled="true"})
+            }
+
         </td>
     </tr>
 }

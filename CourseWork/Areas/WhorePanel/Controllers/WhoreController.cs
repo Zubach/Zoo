@@ -30,12 +30,27 @@ namespace CourseWork.Areas.WhorePanel.Controllers
         public ActionResult Index()
         {
 
-            var list = _context.Orders.Where(x => x.WhoreID == User.Identity.GetUserId()).Select(y => new OrderViewModel() {
+            var whoreID = User.Identity.GetUserId();
+
+            var list = _context.Orders.Where(x => x.WhoreID == whoreID).Select(y => new OrderViewModel() {
+                ID = y.ID,
                 MeetingTime = y.MeetingTime,
-                UserID = y.UserID
+                UserID = y.UserID,
+                Confirmed = y.Confirmed
+                
             });
 
             return View(list);
+        }
+
+        [Authorize(Roles ="Whore")]
+        
+        public ActionResult Confirm(string id)
+        {
+            var order = _context.Orders.FirstOrDefault(x => x.ID == id);
+            order.Confirmed = true;
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Whore");
         }
     }
 }

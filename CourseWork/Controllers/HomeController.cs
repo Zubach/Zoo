@@ -49,6 +49,7 @@ namespace CourseWork.Controllers
             var model = new OrderWhoreViewModel() {
                 UserID = User.Identity.GetUserId(),
                 WhoreID = whore.UserID
+                
             };
 
             return View(model);
@@ -66,7 +67,8 @@ namespace CourseWork.Controllers
                 ID = Guid.NewGuid().ToString(),
                 UserID = model.UserID,
                 WhoreID = model.WhoreID,
-                MeetingTime = date
+                MeetingTime = date,
+                Confirmed = false
             });
             _context.SaveChanges();
             return RedirectToAction("Index","Home");

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CourseWork.Areas.UserPanel.Models.OrderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhoreID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeetingTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhoreID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MeetingTime)
+        </td>
+        <td>
+            @if (item.Confirmed)
+            {
+                <label class="label">
+                    <input class="label__checkbox" type="checkbox" checked disabled />
+
+                    <span class="label__text">
+                        <span class="label__check">
+
+                        </span>
+                    </span>
+                </label>
+            }
+            else
+            {
+                <label class="label">
+                    <input class="label__checkbox" type="checkbox" disabled />
+
+                    <span class="label__text">
+                        <span class="label__check">
+
+                        </span>
+                    </span>
+                </label>
+            }
+        </td>
+        
+    </tr>
+}
+
+</table>

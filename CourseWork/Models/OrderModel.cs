@@ -24,5 +24,8 @@ namespace CourseWork.Models
         [Required]
 
         public DateTime MeetingTime { get; set; }
+
+        [Required]
+        public bool Confirmed { get; set; }
     }
 }

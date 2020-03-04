@@ -175,6 +175,9 @@
     <Compile Include="Areas\PimpPanel\Controllers\PimpController.cs" />
     <Compile Include="Areas\PimpPanel\Models\WhoreViewModel.cs" />
     <Compile Include="Areas\PimpPanel\PimpPanelAreaRegistration.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\UserController.cs" />
+    <Compile Include="Areas\UserPanel\Models\OrderViewModel.cs" />
+    <Compile Include="Areas\UserPanel\UserPanelAreaRegistration.cs" />
     <Compile Include="Areas\WhorePanel\Controllers\WhoreController.cs" />
     <Compile Include="Areas\WhorePanel\Models\OrderViewModel.cs" />
     <Compile Include="Areas\WhorePanel\WhorePanelAreaRegistration.cs" />
@@ -214,6 +217,10 @@
     <Compile Include="Migrations\202002271836171_orders.Designer.cs">
       <DependentUpon>202002271836171_orders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003041659155_order_update.cs" />
+    <Compile Include="Migrations\202003041659155_order_update.Designer.cs">
+      <DependentUpon>202003041659155_order_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -233,10 +240,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\PimpPanel\Views\web.config" />
@@ -256,6 +264,12 @@
     <Content Include="Areas\WhorePanel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\WhorePanel\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\WhorePanel\Views\Whore\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\UserPanel\Views\User\Index.cshtml" />
+    <Content Include="Areas\WhorePanel\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\UserPanel\Views\User\_LoginPartial.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -344,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002271836171_orders.resx">
       <DependentUpon>202002271836171_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003041659155_order_update.resx">
+      <DependentUpon>202003041659155_order_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
