@@ -54,12 +54,15 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-default" value="Register" id="SubmitBtn" />
         </div>
     </div>
 
     <div id="element_to_pop_up" style="display:none">
-        laps
+        <p>
+
+            Wait for registration confirmation.
+        </p>
     </div>
 }
 
@@ -68,11 +71,14 @@
     @Scripts.Render("~/bundles/bPopup")
     <script>
         $("#emailsPanel").hide();
-        $('#element_to_pop_up').bPopup({
-            speed: 650,
-            transition: 'slideIn',
-            transitionClose: 'slideBack'
+        $("#SubmitBtn").click(() => {
+            $('#element_to_pop_up').bPopup({
+                speed: 650,
+                transition: 'slideIn',
+                transitionClose: 'slideBack'
+            });
         });
+        
         function changeRole(str) {
             $("#txtRole").val(str);
 
