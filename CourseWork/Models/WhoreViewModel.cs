@@ -16,8 +16,9 @@ namespace CourseWork.Models
 
         public decimal PricePerHour { get; set; }
 
+        public float Rating { get; set; }
 
-        
+
         public string PimpID { get; set; }
 
         public string ImageUrl { get; set; }

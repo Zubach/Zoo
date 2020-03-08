@@ -21,6 +21,10 @@ namespace CourseWork.Models
         public string PimpID { get; set; }
 
 
+        
+        public float? Rating { get; set; }
+
+
 
     }
 }

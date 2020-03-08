@@ -27,5 +27,9 @@ namespace CourseWork.Models
 
         [Required]
         public bool Confirmed { get; set; }
+
+        [Required]
+
+        public bool CanRating { get; set; }
     }
 }

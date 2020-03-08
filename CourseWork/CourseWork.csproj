@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hangfire.Core, Version=1.7.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.7.9\lib\net46\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.7.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.7.9\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -221,6 +227,10 @@
     <Compile Include="Migrations\202003041659155_order_update.Designer.cs">
       <DependentUpon>202003041659155_order_update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003081530589_rating.cs" />
+    <Compile Include="Migrations\202003081530589_rating.Designer.cs">
+      <DependentUpon>202003081530589_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -361,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003041659155_order_update.resx">
       <DependentUpon>202003041659155_order_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003081530589_rating.resx">
+      <DependentUpon>202003081530589_rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
