@@ -17,6 +17,10 @@ namespace CourseWork.Areas.UserPanel.Models
 
         public DateTime MeetingTime { get; set; }
 
+
         public bool Confirmed { get; set; }
+
+
+        public bool CanRating { get; set; }
     }
 }

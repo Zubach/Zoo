@@ -21,6 +21,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Confirmed)
         </th>
+        <th>
+            
+        </th>
         
     </tr>
 
@@ -61,8 +64,45 @@
                 </label>
             }
         </td>
+        <td>
+            @if (item.CanRating)
+            {
+                @*@Html.ActionLink("Rating", "Rating", new {  id=item.WhoreID  }, htmlAttributes: new {id="ratingBtn", class="btn btn-success"})*@ 
+                <a class="btn btn-success" id="ratingBtn" name="@item.WhoreID&&@item.UserID">Rating</a>
+            }
+        </td>
+
         
     </tr>
 }
 
 </table>
+
+<div class="cont" id="ratingContainer">
+    @using (Html.BeginForm("Rating", "User", FormMethod.Post))
+    {
+        <input type="text" name="WhoreID" id="whoreIdTxt" class="hidden" />
+        <input type="text" name="UserID" id="userIdTxt" class="hidden" />
+        <input id="result" type="text" name="Rating" class="hidden" />
+        <div class="stars">
+            <form action="">
+                <input class="star star-5" id="star-5" type="radio" name="star" />
+                <label class="star star-5" for="star-5"></label>
+                <input class="star star-4" id="star-4" type="radio" name="star" />
+                <label class="star star-4" for="star-4"></label>
+                <input class="star star-3" id="star-3" type="radio" name="star" />
+                <label class="star star-3" for="star-3"></label>
+                <input class="star star-2" id="star-2" type="radio" name="star" />
+                <label class="star star-2" for="star-2"></label>
+                <input class="star star-1" id="star-1" type="radio" name="star" />
+                <label class="star star-1" for="star-1"></label>
+
+
+
+
+            </form>
+             <input type="submit" value="Confirm" class="btn" style="background-color: rgba(207,111,27,1) !important; color:white" />
+        </div>
+
+    }
+</div>

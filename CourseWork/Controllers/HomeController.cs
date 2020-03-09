@@ -33,8 +33,10 @@ namespace CourseWork.Controllers
                    UserID = x.UserID,
                    PricePerHour = x.PricePerHour,
                    UserName = _context.Users.ToList().FirstOrDefault(y => y.Id == x.UserID).UserName,
-                   ImageUrl = _context.Images.FirstOrDefault(j => j.UserID == x.UserID).ImageName
-                  
+                   ImageUrl = _context.Images.FirstOrDefault(j => j.UserID == x.UserID).ImageName,
+                   Rating = x.Rating 
+
+
                });
             if (User.Identity.IsAuthenticated)
                 return View(list);

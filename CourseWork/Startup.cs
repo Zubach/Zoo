@@ -22,13 +22,13 @@ namespace CourseWork
 
            
 
-            Expression<Action> ex = ()=>CanRating();
-            RecurringJob.AddOrUpdate(ex
+            //Expression<Action> ex = ()=>CanRating();
+            //RecurringJob.AddOrUpdate(ex
                 
 
-                    , Cron.MinuteInterval(20)
+            //        , Cron.MinuteInterval(20)
 
-                ) ;
+            //    ) ;
 
 
         }

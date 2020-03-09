@@ -30,10 +30,23 @@ namespace CourseWork.Areas.UserPanel.Controllers
                  Confirmed = y.Confirmed,
                  UserID = y.UserID,
                  WhoreID = y.WhoreID,
-                 MeetingTime = y.MeetingTime
+                 MeetingTime = y.MeetingTime,
+                 CanRating = y.CanRating
              });
 
             return View(list);
+        }
+
+        public ActionResult Rating(string WhoreID,string UserID,int Rating)
+        {
+            var whore = _context.Whores.FirstOrDefault(x=>x.UserID == WhoreID);
+            whore.Rating = (whore.Rating != null) ? (whore.Rating + Rating) / 2 : Rating;
+
+            _context.Orders.FirstOrDefault(x => x.WhoreID == WhoreID && x.UserID == UserID).CanRating = false;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
