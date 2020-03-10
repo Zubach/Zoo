@@ -92,7 +92,7 @@
     }
 
     .dropdown{
-        margin:5px 0px 5px 20px;
+        margin:5px 0px 5px 30px;
         padding: 5px;
     }
     .dropdown button{
@@ -110,7 +110,7 @@
         </button>
         <ul class="dropdown-menu">
 
-            <li><a href="/Home/SortedIndex?filter=rating">By rating</a></li>
+            <li><a href="/Home/SortedIndex?filter=rating">By rating <i class="fa fa-star-half" aria-hidden="true"></i></a></li>
             <li><a href="/Home/SortedIndex?filter=price_to_smaller">By price <i class="fa fa-arrow-down" style="color:rgb(164, 41, 41)"></i></a></li>
             <li><a href="/Home/SortedIndex?filter=price_to_bigger">By price <i class="fa fa-arrow-up" style="color:rgb(53, 165, 58)"></i></a></li>
 
@@ -138,6 +138,7 @@
                 </form>
             </div>
             <h4 class="whore-price">@item.PricePerHour $</h4>
+            
             @Html.ActionLink("Order", "Order", routeValues: new { id = item.UserID }, htmlAttributes: new { @class = "whore-order-btn btn" })
         </div>
 

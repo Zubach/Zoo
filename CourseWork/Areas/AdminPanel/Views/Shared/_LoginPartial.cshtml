@@ -11,6 +11,9 @@
         <li>
             @Html.ActionLink("AdminPanel", "Index", "Admin", new { Area = "AdminPanel" }, htmlAttributes: new { title = "AdminPanel" })
         </li>
+        <li>
+            <a href="/myJobDashboard">JobDashboard</a>
+        </li>
     }
     <li>
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
