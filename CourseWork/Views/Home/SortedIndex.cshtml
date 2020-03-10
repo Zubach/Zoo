@@ -1,22 +1,12 @@
 ﻿@model IEnumerable<CourseWork.Models.WhoreViewModel>
-@{
-    ViewBag.Title = "Home Page";
-}
-
-@*<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>*@
 
 <style>
-    
+
 
     div.stars {
         width: 200px;
         display: block;
-        height: 40px; 
-        
+        height: 40px;
     }
 
     input.star {
@@ -87,19 +77,19 @@
     }
 
 
-    .footer-distributed{
+    .footer-distributed {
         margin-top: 0px !important;
     }
 
-    .dropdown{
-        margin:5px 0px 5px 20px;
+    .dropdown {
+        margin: 5px 0px 5px 20px;
         padding: 5px;
     }
-    .dropdown button{
-        background-color:rgba(207,111,27,1) !important;
-        border-color: rgba(207,111,27,1) !important;
-    }
 
+        .dropdown button {
+            background-color: rgba(207,111,27,1) !important;
+            border-color: rgba(207,111,27,1) !important;
+        }
 </style>
 
 <div class="row">
@@ -152,20 +142,20 @@
             const elem = list[i];
             let ancestor = elem.closest("div");
 
-            
+
 
             let form = elem.closest("div").children.namedItem("stars-container").children.namedItem("stars-form");
 
-            
+
 
             let children = form.children;
             for (let j = 0; j < children.length; j++) {
                 const child = children[j];
 
-                if (child.getAttribute("name") == "star" && child.hasAttribute("type") && child.className  == ("star star-" + parseInt(elem.value))) {
+                if (child.getAttribute("name") == "star" && child.hasAttribute("type") && child.className == ("star star-" + parseInt(elem.value))) {
                     child.setAttribute("checked", "true");
-                   
-                    
+
+
                 }
             }
         }

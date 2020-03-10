@@ -11,6 +11,7 @@ namespace CourseWork.Controllers
     public class HomeController : Controller
     {
         ApplicationDbContext _context = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             if (User.IsInRole("Pimp"))
@@ -42,6 +43,62 @@ namespace CourseWork.Controllers
                 return View(list);
             return RedirectToAction("Register", "Account");
         }
+
+        public ActionResult SortedIndex(string filter)
+        {
+
+            if (User.IsInRole("Pimp"))
+            {
+                var userId = User.Identity.GetUserId();
+                var pimp = _context.Users.FirstOrDefault(x => x.Id == userId);
+                if (!(pimp.PimpConfirmed == true ? true : false))
+                {
+                    return RedirectToAction("AccessDenied", "Pimp", new { Area = "PimpPanel" });
+                }
+            }
+            else
+            {
+                //  return RedirectToAction("Index", new { Area = "" });
+            }
+
+            var list = _context.Whores.ToList().Select(x =>
+               new WhoreViewModel()
+               {
+                   PimpID = x.PimpID,
+                   UserID = x.UserID,
+                   PricePerHour = x.PricePerHour,
+                   UserName = _context.Users.ToList().FirstOrDefault(y => y.Id == x.UserID).UserName,
+                   ImageUrl = _context.Images.FirstOrDefault(j => j.UserID == x.UserID).ImageName,
+                   Rating = x.Rating
+
+
+               });
+
+            List<WhoreViewModel> sortedList = null;
+
+            switch (filter)
+            {
+                case "rating":
+                    sortedList = (from e in list
+                                  orderby e.Rating descending
+                                  select e).ToList();
+                    break;
+                case "price_to_smaller":
+                    sortedList = (from e in list
+                                  orderby e.PricePerHour descending
+                                  select e).ToList();
+                    break;
+                case "price_to_bigger":
+                    sortedList = list.OrderBy(x => x.PricePerHour).ToList();
+                    break;
+            }
+
+            if (User.Identity.IsAuthenticated)
+                return View(sortedList);
+            return RedirectToAction("Register", "Account");
+        }
+
+
         [HttpGet]
         public ActionResult Order(string id)
         {

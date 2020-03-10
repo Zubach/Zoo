@@ -10,11 +10,9 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserID)
+            @Html.DisplayNameFor(model => model.WhoreName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WhoreID)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.MeetingTime)
         </th>
@@ -22,58 +20,55 @@
             @Html.DisplayNameFor(model => model.Confirmed)
         </th>
         <th>
-            
+
         </th>
-        
+
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WhoreID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MeetingTime)
-        </td>
-        <td>
-            @if (item.Confirmed)
-            {
-                <label class="label">
-                    <input class="label__checkbox" type="checkbox" checked disabled />
+<tr>
+    <th>
+        @Html.DisplayFor(modelItem => item.WhoreName)
+    </th>
+    <td>
+        @Html.DisplayFor(modelItem => item.MeetingTime)
+    </td>
+    <td>
+        @if (item.Confirmed)
+        {
+            <label class="label">
+                <input class="label__checkbox" type="checkbox" checked disabled />
 
-                    <span class="label__text">
-                        <span class="label__check">
+                <span class="label__text">
+                    <span class="label__check">
 
-                        </span>
                     </span>
-                </label>
-            }
-            else
-            {
-                <label class="label">
-                    <input class="label__checkbox" type="checkbox" disabled />
+                </span>
+            </label>
+        }
+        else
+        {
+            <label class="label">
+                <input class="label__checkbox" type="checkbox" disabled />
 
-                    <span class="label__text">
-                        <span class="label__check">
+                <span class="label__text">
+                    <span class="label__check">
 
-                        </span>
                     </span>
-                </label>
-            }
-        </td>
-        <td>
-            @if (item.CanRating)
-            {
-                @*@Html.ActionLink("Rating", "Rating", new {  id=item.WhoreID  }, htmlAttributes: new {id="ratingBtn", class="btn btn-success"})*@ 
-                <a class="btn btn-success" id="ratingBtn" name="@item.WhoreID&&@item.UserID">Rating</a>
-            }
-        </td>
+                </span>
+            </label>
+        }
+    </td>
+    <td>
+        @if (item.CanRating)
+        {
+            @*@Html.ActionLink("Rating", "Rating", new {  id=item.WhoreID  }, htmlAttributes: new {id="ratingBtn", class="btn btn-success"})*@
+            <a class="btn btn-success" id="ratingBtn" name="@item.WhoreID&&@item.UserID">Rating</a>
+        }
+    </td>
 
-        
-    </tr>
+
+</tr>
 }
 
 </table>

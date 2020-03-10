@@ -280,6 +280,10 @@
     <Content Include="Areas\UserPanel\Views\User\Index.cshtml" />
     <Content Include="Areas\WhorePanel\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\UserPanel\Views\User\_LoginPartial.cshtml" />
+    <Content Include="Areas\WhorePanel\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\PimpPanel\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shared\_Footer.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bPopup.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -329,6 +333,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\WhoreConfirm\Confirm.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\SortedIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -31,7 +31,8 @@ namespace CourseWork.Areas.UserPanel.Controllers
                  UserID = y.UserID,
                  WhoreID = y.WhoreID,
                  MeetingTime = y.MeetingTime,
-                 CanRating = y.CanRating
+                 CanRating = y.CanRating,
+                 WhoreName = _context.Users.FirstOrDefault(j => j.Id == y.WhoreID).UserName
              });
 
             return View(list);

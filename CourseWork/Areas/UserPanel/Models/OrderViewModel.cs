@@ -13,7 +13,9 @@ namespace CourseWork.Areas.UserPanel.Models
         
         public string WhoreID { get; set; }
 
-  
+        public string WhoreName { get; set; }
+
+
 
         public DateTime MeetingTime { get; set; }
 
