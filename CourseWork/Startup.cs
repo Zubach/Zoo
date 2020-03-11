@@ -49,7 +49,7 @@ namespace CourseWork
         public void CanRating()
         {
             var _context = new ApplicationDbContext();
-            var list =_context.Orders.Where(x => x.MeetingTime < DateTime.Now);
+            var list =_context.Orders.Where(x => x.MeetingTime.AddHours(1) <= DateTime.Now);
             foreach(var item in list)
             {
                 item.CanRating = true;
